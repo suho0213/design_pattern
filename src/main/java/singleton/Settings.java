@@ -1,6 +1,8 @@
 package main.java.singleton;
 
-public class Settings {
+import java.io.Serializable;
+
+public class Settings implements Serializable {
 
     private  Settings() {}
 
@@ -12,5 +14,8 @@ public class Settings {
         return SettingsHolder.INSTANCE;
     }
 
+    protected Object readResolve() {
+        return getInstance();
+    }
 
 }
